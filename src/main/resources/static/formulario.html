@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tech Shop 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <style>
+            h2 {
+                text-align: center;
+                background-color: blue;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <header>
+            <h1>Formulario</h1>            
+        </header>
+        
+        <section>
+            <form action="#">
+                <table border="0" cellspacing="5" cellpadding="5">
+                    
+                    <tbody>
+                        <tr>
+                            <td>Usuario</td>
+                            <td><input type="email" 
+                                       name="usuario"
+                                       placeholder="correo@correo"
+                                       size="25"/></td>
+                        </tr>
+                        <tr>
+                            <td>Clave</td>
+                            <td><input type="password"
+                                       name="clave"
+                                       size="10"
+                                       /></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre completo</td>
+                            <td><input type="text" 
+                                       name="nombre"
+                                       placeholder="Nombre completo"
+                                       size="40"/></td>
+                        </tr>
+                        <tr>
+                            <td>Color preferido</td>
+                            <td><input type="color" name="color"/></td>
+                        </tr>
+                        <tr>
+                            <td>Foto</td>
+                            <td><input type="file" 
+                                       name="foto"
+                                       accept="image/*"
+                                       /></td>
+                        </tr>
+                        <tr>
+                            <td>Telefono</td>
+                            <td><input type="tel"
+                                       name="telefono"
+                                       size="8"/></td>
+                        </tr>
+                        <tr>
+                            <td>Sitio web</td>
+                            <td><input type="url" name="sitio"/></td>
+                        </tr>
+                        <tr>
+                            <td>Rango salarial</td>
+                            <td><input type="number" name="salario"
+                                       min="400"
+                                       max="10000"
+                                       /></td>
+                        </tr>
+                        <tr>
+                            <td>Zona </td>
+                            <td>Dentro gram<input type="radio" 
+                                                  name="zona"
+                                                  value="1"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nivel de satisfaccions</td>
+                            <td>Minimo 0<input type="range" 
+                                               min="0"
+                                               max="10"
+                                               step="1"/>
+                            10 maximo
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Direcccion </td>
+                            <td><<textarea name="direccion" rows="4" cols="40"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Acciones</td>
+                            <td><input type="reset" value="limpiar"/>
+                                <input type="submit" value="Enviar"/>
+                            
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                Declaro bajo juramento que la informacion es veraz <input type="checkbox" name="jura" required>
+            </form>
+        </section>
+        
+        
+        
+    </body>
+</html>
