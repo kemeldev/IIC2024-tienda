@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!<!-- Esta es una pagina dinamica-->
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"  >
+    <head th:fragment="head">
+        <title>Tech Shop_Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
+        <script th:scr="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:scr="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:scr="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <header th:fragment="header">
+            <h1>Esto es un encabezado</h1>
+            <p>Hola</p>
+        </header>
+        
+        <footer th:fragment="header">
+            <h4>Esto es un pie de pagina</h4>
+        </footer>
+        
+        
+    </body>
+</html>
