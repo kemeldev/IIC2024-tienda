@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- Esta es una pagina dinamica-->
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"  >
+    <head th:replace="~{layout/plantilla :: head}"/>
+     
+    <body>
+        <!-- fragmento numero 1 para incluir el boton de agregar una categoria -->
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            
+        </section>
+        
+        <!-- fragmento numero 2 para presentar una ventana modal -->
+        <section th:fragment="agregarCategoria">
+            
+        </section>
+        
+        <!-- fragmento numero 3 para mostrar el listado de categorias -->
+        <section th:fragment="listado de categorias" id="categorias">
+            
+        </section>
+        
+        <!-- fragmento numero 4 para editar categorias -->
+        <section th:fragment="editarCategoria">
+            
+        </section>
+        
+        <!-- fragmento numero 5 para mostrar los botones de editar -->
+        <section th:fragment="botonesEditar">
+            
+        </section>
+        
+        
+    </body>
+</html>
