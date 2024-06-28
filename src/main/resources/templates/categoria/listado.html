@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <!-- Esta es una pagina dinamica-->
-<html 
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"  >
-    <head th:replace="~{layout/plantilla :: head}"/>
-     
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}"></head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
-        
-        <section th:replace="~{categoria/fragmentos :: botonesAgregar}" ></section>
-        <section th:replace="~{categoria/fragmentos :: agregarCategoria}" ></section>
+        <header th:replace="~{layout/plantilla :: header}"></header>
 
-        <section th:replace="~{categoria/fragmentos :: listadoCategorias}" ></section>
+        <section th:replace="~{categoria/fragmentos :: botonesAgregar}"></section>
+        <section th:replace="~{categoria/fragmentos :: agregarCategoria}"></section>
+        <section th:replace="~{categoria/fragmentos :: listadoCategorias}"></section>
 
-        
-        <header th:replace="~{layout/plantilla :: footer}"/>
-        
-        
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
     </body>
 </html>
