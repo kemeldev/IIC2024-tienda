@@ -2,7 +2,10 @@
 <!-- Esta es una pagina dinamica -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/plantilla :: head}"/>
+    <head th:replace="~{layout/plantilla :: head}">
+           <title>TechShop</title>
+     </head>
+    
      
     <body>
         <!-- fragmento numero 1 para incluir el boton de agregar una categoria -->
@@ -139,7 +142,7 @@
             </div>
         </section> -->
         
-        <section th:fragment="listadoDeCategorias" id="categorias">
+        <section th:fragment="listadoCategorias" id="categorias">
             <div class="container">
                 <div class="row">
                     <div class="card">
