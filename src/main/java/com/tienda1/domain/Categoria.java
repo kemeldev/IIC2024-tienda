@@ -4,6 +4,7 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 import lombok.Data;
 import jakarta.persistence.Id;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,13 +27,17 @@ public class Categoria implements Serializable {
     //@Column(name="activo")
     private boolean activo;
     
-    public Categoria() {
+    @OneToMany // Es una asociacion para una relacion de uno a muchos entre tablas
+    @Column(name="id_categoria") // es la columna con la que se realiza la asociacion
+    private List<Producto> productos;
+    
+    public Categoria(){
         
     }
     
     public Categoria(String categoria, boolean activo){
         this.descripcion = categoria;
-        this.activo= activo;
+        this.activo = activo;
     }
     
 }

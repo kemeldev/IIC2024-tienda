@@ -17,8 +17,7 @@ public class Producto implements Serializable {
     @Column(name="id_producto")
     private Long idProducto;
     
-    
-    private Long idCategoria;
+    // private Long idCategoria;  //eliminamos este atributo
     
     private String detalle;
     
@@ -35,13 +34,12 @@ public class Producto implements Serializable {
     //@Column(name="activo")
     private boolean activo;
     
-    public Producto() {
-        
-    }
     
-    public Producto(String categoria, boolean activo){
-        this.descripcion = categoria;
-        this.activo= activo;
-    }
+    @ManyToOne // La asociacion de muchos a uno
+    @JoinColumn(name="id_categoria") //Indicar el atributo en este caso de la tabla
+    
+    private Categoria categoria;
+    
+    
     
 }
