@@ -28,7 +28,7 @@ public class Categoria implements Serializable {
     private boolean activo;
     
     @OneToMany // Es una asociacion para una relacion de uno a muchos entre tablas
-    @Column(name="id_categoria") // es la columna con la que se realiza la asociacion
+    @JoinColumn(name="id_categoria", updatable=false) // es la columna con la que se realiza la asociacion
     private List<Producto> productos;
     
     public Categoria(){
