@@ -23,7 +23,31 @@
             </div>
         </section>
         
-        <!-- fragmento numero 2 para mostrar el listado de productos -->
+        <!-- fragmento numero 2 para mostrar las tarjetas de los productos -->
+        <section th:fragment="tarjetas" class="bg-light">
+            <div class="row row-cols-4">
+                <div class="card" th:each="p : ${productos}">
+                    <figure>
+                        <img th:src="${p.rutaImagen}"
+                             height="200"
+                             alt="alt"
+                             />
+                        <figcaption>
+                           Precio: [[${p.precio}]] Existencias: ([[${p.existencias}]])
+                        </figcaption>
+                    </figure>
+                    <div class="card-header">
+                        <h4>[[${p.descripcion}]]</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>[[${p.detalle}]]</p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+        <!-- fragmento numero 3 para mostrar el listado de productos -->
         <section th:fragment="listadoProductos" id="productos">
             <div class="container">
                 <div class="row">
