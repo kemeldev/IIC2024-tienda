@@ -19,4 +19,8 @@ public interface ProductoService {
     
     // elimina un registro de la tabla producto.. si el objeto pasado tiene un idProducto y este existe en la tabla
     public void delete(Producto producto);
+    
+    
+    // Se define el metodo para llamar a la consulta ampliada
+    public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup);
 }
