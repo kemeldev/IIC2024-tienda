@@ -23,4 +23,10 @@ public interface ProductoService {
     
     // Se define el metodo para llamar a la consulta ampliada
     public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup);
+    
+    // Se define el metodo para llamar a la consulta ampliada JPQL
+    public List<Producto> metodoJPQL(double precioInf, double precioSup);
+    
+    // Se define el metodo para llamar a la consulta ampliada SQL nativa
+    public List<Producto> metodoSQL(double precioInf, double precioSup);
 }
