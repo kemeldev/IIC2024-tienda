@@ -1,13 +1,13 @@
 package com.tienda1;
 
 import java.util.Locale;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -94,7 +94,7 @@ public class ProjectConfig implements WebMvcConfigurer {
     
     // definir la parte de autorizacion
     // este metodo se utilzia esta semana pero se realizara un reemplazo la proxima
-    @Bean
+    /* @Bean
     public UserDetailsService users (){
         UserDetails admin, vendedor, usuario;
         admin = User.builder()
@@ -116,5 +116,16 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .build();
         
         return new InMemoryUserDetailsManager(admin, vendedor, usuario);
+    } */
+    
+    @Autowired
+    private UserDetailsService userDetailsService;
+    
+    @Autowired
+    public void configurerGlobal(AuthenticationManagerBuilder builder) 
+        throws Exception {
+        builder.userDetailsService(userDetailsService)
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
+    
 }
