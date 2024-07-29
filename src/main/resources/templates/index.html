@@ -2,15 +2,18 @@
 <!-- Esta es una pagina dinamica-->
 <html 
     xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
     xmlns:th="http://www.thymeleaf.org"  >
     <head th:replace="~{layout/plantilla :: head}"/>
      
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         
-        <h3>Esto no esta en la plantilla..</h3>
+        <h3>Texto Quemado agregado por Mi</h3>
         
-        <h3>[[${saludo}]]</h3>
+        <h3>Este texto viene de una variable en IndexController: [[${saludo}]]</h3>
+        
+        <section th:replace="~{pruebas/fragmentos :: tarjetas}"/>
         
         <header th:replace="~{layout/plantilla :: footer}"/>
         

@@ -33,6 +33,7 @@ public class PruebasController {
 
         
         return "/pruebas/listado";
+        
     }
     
     
