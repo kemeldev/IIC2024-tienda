@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
     
-    @GetMapping("/")
+    /*@GetMapping("/")
     public String inicio(Model model) {
         model.addAttribute("saludo", "hola a todos, como estan?");
         return "index";
-    }
+    } */
 }

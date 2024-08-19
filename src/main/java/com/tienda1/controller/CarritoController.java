@@ -1,0 +1,103 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.tienda1.controller;
+
+import com.tienda1.domain.Item;
+import com.tienda1.domain.Producto;
+import com.tienda1.service.ItemService;
+import com.tienda1.service.ProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class CarritoController {
+    @Autowired
+    private ItemService itemService;
+    @Autowired
+    private ProductoService productoService;
+    
+    @Value("${tcambio}")
+    private double tCambio;
+    
+    //Para ver el listado de productos
+    @GetMapping("/")
+    public String inicio_index(Model model) {
+        var productos = productoService.getProductos(true);
+        model.addAttribute("productos", productos);
+        return "index";
+    }  
+    
+    //Para ver el carrito
+    @GetMapping("/carrito/listado")
+    public String inicio(Model model) {
+        var items = itemService.gets();
+        model.addAttribute("items", items);
+        var carritoTotalVenta = 0;
+        for (Item i : items) {
+            carritoTotalVenta += (i.getCantidad() * i.getPrecio());
+        }
+        model.addAttribute("items", items);
+        model.addAttribute("carritoTotal",carritoTotalVenta);
+        model.addAttribute("totalDolares", (double) (Math.round(carritoTotalVenta/tCambio*100)/100));
+        model.addAttribute("precioVenta", tCambio);
+        return "/carrito/listado";
+    }    
+   
+    //Para Agregar un producto al carrito
+    @GetMapping("/carrito/agregar/{idProducto}")
+    public ModelAndView agregarItem(Model model, Item item) {
+        Item item2 = itemService.get(item);
+        if (item2 == null) {
+            Producto producto = productoService.getProducto(item);
+            item2 = new Item(producto);
+        }
+        itemService.save(item2);
+        var lista = itemService.gets();
+        var totalCarritos = 0;
+        var carritoTotalVenta = 0;
+        for (Item i : lista) {
+            totalCarritos += i.getCantidad();
+            carritoTotalVenta += (i.getCantidad() * i.getPrecio());
+        }
+        model.addAttribute("listaItems", lista);
+        model.addAttribute("listaTotal", totalCarritos);
+        model.addAttribute("carritoTotal", carritoTotalVenta);
+        return new ModelAndView("/carrito/fragmentos :: verCarrito");
+    }
+
+    //Para mofificar un producto del carrito
+    @GetMapping("/carrito/modificar/{idProducto}")
+    public String modificarItem(Item item, Model model) {
+        item = itemService.get(item);
+        model.addAttribute("item", item);
+        return "/carrito/modifica";
+    }
+
+    //Para eliminar un elemento del carrito
+    @GetMapping("/carrito/eliminar/{idProducto}")
+    public String eliminarItem(Item item) {
+        itemService.delete(item);
+        return "redirect:/carrito/listado";
+    }
+
+    //Para actualizar un producto del carrito (cantidad)
+    @PostMapping("/carrito/guardar")
+    public String guardarItem(Item item) {
+        itemService.actualiza(item);
+        return "redirect:/carrito/listado";
+    }
+
+    //Para facturar los productos del carrito... no implementado...
+    @GetMapping("/facturar/carrito")
+    public String facturarCarrito() {
+        itemService.facturar();
+        return "redirect:/";
+    }
+}
