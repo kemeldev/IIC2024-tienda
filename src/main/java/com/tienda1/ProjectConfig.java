@@ -1,7 +1,9 @@
 package com.tienda1;
 
+import com.paypal.base.rest.APIContext;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -128,4 +130,16 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
     
+    // para integracion con paypal
+    @Value("${paypal.client-id}")
+    private String clientID;
+    @Value("${paypal.cliente-secret}")
+    private String clientSecret;
+    @Value("${paypal.mode}")
+    private String mode;
+    
+    @Bean
+    public APIContext apiContext (){
+        return new APIContext (clientID, clientSecret, mode);
+    }
 }
