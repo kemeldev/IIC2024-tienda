@@ -21,4 +21,6 @@ public class Rol implements Serializable {
     @Column(name="id_usuario")
     private Long idUsuario;
     
+    // nada
+    
 }
